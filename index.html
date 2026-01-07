@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Request Movies & Series</title>
-  <!-- Google Font for playful Jellybean title -->
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -25,11 +24,10 @@
       width: 100%;
       max-width: 400px;
       text-align: center;
-      box-sizing: border-box; /* ensures padding stays inside the box */
-      overflow: hidden; /* prevent elements from spilling out */
+      box-sizing: border-box;
+      overflow: hidden;
     }
 
-    /* Jellybean Title */
     .jellybean-title {
       font-family: 'Baloo 2', cursive;
       font-size: 48px;
@@ -56,7 +54,7 @@
       outline: none;
       font-size: 16px;
       transition: all 0.3s ease;
-      box-sizing: border-box; /* ensure input padding stays inside */
+      box-sizing: border-box;
     }
 
     .request-form input:focus,
@@ -92,17 +90,24 @@
       color: #777;
     }
 
-    /* Ensure all elements stay inside the card */
-    .request-form * {
-      box-sizing: border-box;
+    .thank-you {
+      color: #ff6f91;
+      font-weight: bold;
+      margin-top: 20px;
+      display: none; /* hidden by default */
     }
   </style>
 </head>
 <body>
 
+  <!-- Hidden iframe to prevent JSON from showing -->
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
   <form class="request-form" 
         method="POST" 
-        action="https://script.google.com/macros/s/AKfycby16eiNFzJ8gEHMjsPXVcNvW4Nre22l1QwJoC5orXbYOZG_iInHwIsBWk3W-j-LtTgu/exec">
+        action="https://script.google.com/macros/s/AKfycby16eiNFzJ8gEHMjsPXVcNvW4Nre22l1QwJoC5orXbYOZG_iInHwIsBWk3W-j-LtTgu/exec"
+        target="hidden_iframe"
+        onsubmit="showThankYou()">
     <h2 class="jellybean-title">Jellybean</h2>
     <h2>(Request Form)</h2>
 
@@ -112,7 +117,15 @@
 
     <button type="submit">Send Request</button>
     <p>We’ll notify you once your request is processed!</p>
+    <p class="thank-you" id="thankYouMessage">✅ Thank you! Your request has been sent.</p>
   </form>
+
+  <script>
+    function showThankYou() {
+      const message = document.getElementById('thankYouMessage');
+      message.style.display = 'block';
+    }
+  </script>
 
 </body>
 </html>
