@@ -1,60 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Movie Request Form</title>
-</head>
-<body>
-  <h1>Request a Movie or Series</h1>
-  <form id="requestForm">
-    <label>Name:</label><br>
-    <input type="text" name="name" required><br><br>
-
-    <label>Email:</label><br>
-    <input type="email" name="email" required><br><br>
-
-    <label>Type:</label><br>
-    <select name="type">
-      <option value="Movie">Movie</option>
-      <option value="Series">Series</option>
-    </select><br><br>
-
-    <label>Title:</label><br>
-    <input type="text" name="title" required><br><br>
-
-    <label>Notes:</label><br>
-    <textarea name="notes"></textarea><br><br>
-
-    <button type="submit">Submit Request</button>
-  </form>
-
-  <p id="response"></p>
-
-  <script>
-    const form = document.getElementById("requestForm");
-    form.addEventListener("submit", e => {
-      e.preventDefault();
-
-      const data = {};
-      new FormData(form).forEach((value, key) => data[key] = value);
-
-      fetch("https://script.google.com/macros/s/AKfycbwauqbMY-Mm5feNpWTa4PswlBXyLo0SyotcStIKXFaYKInU1tK2WT24QHgGJe-rzG1CRg/exec", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: { "Content-Type": "application/json" }
-      })
-      .then(res => res.json())
-      .then(res => {
-        if(res.result === "success") {
-          document.getElementById("response").innerText = "Request submitted successfully!";
-          form.reset();
-        } else {
-          document.getElementById("response").innerText = "Error: " + res.message;
-        }
-      })
-      .catch(err => {
-        document.getElementById("response").innerText = "Error: " + err;
-      });
-    });
-  </script>
-</body>
-</html>
+<form 
+  method="POST" 
+  action="YOUR_WEBAPP_URL"
+>
+  <input name="Email" type="email" placeholder="Email" required>
+  <input name="Name" type="text" placeholder="Name" required>
+  <button type="submit">Send</button>
+</form>
