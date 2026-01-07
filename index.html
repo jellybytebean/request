@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Movie / Series Request</title>
+</head>
+<body>
+
+<h2>Request a Movie or Series</h2>
+
+<form id="requestForm">
+  <label>Type:</label><br>
+  <select name="type" required>
+    <option value="Movie">Movie</option>
+    <option value="Series">Series</option>
+  </select><br><br>
+
+  <label>Title:</label><br>
+  <input type="text" name="title" required><br><br>
+
+  <label>Platform:</label><br>
+  <input type="text" name="platform"><br><br>
+
+  <label>Notes:</label><br>
+  <textarea name="notes"></textarea><br><br>
+
+  <button type="submit">Submit</button>
+</form>
+
+<p id="status"></p>
+
+<script>
+  const form = document.getElementById("requestForm");
+  const status = document.getElementById("status");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const data = {
+      type: form.type.value,
+      title: form.title.value,
+      platform: form.platform.value,
+      notes: form.notes.value
+    };
+
+    fetch("https://script.google.com/macros/s/AKfycbwauqbMY-Mm5feNpWTa4PswlBXyLo0SyotcStIKXFaYKInU1tK2WT24QHgGJe-rzG1CRg/exec", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" }
+    })
+    .then(res => res.json())
+    .then(() => {
+      status.textContent = "Request submitted successfully!";
+      form.reset();
+    })
+    .catch(() => {
+      status.textContent = "Error submitting request.";
+    });
+  });
+</script>
+
+</body>
+</html>
