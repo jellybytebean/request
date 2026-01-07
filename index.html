@@ -1,8 +1,118 @@
-<form 
-  method="POST" 
-  action="https://script.google.com/macros/s/AKfycby16eiNFzJ8gEHMjsPXVcNvW4Nre22l1QwJoC5orXbYOZG_iInHwIsBWk3W-j-LtTgu/exec"
->
-  <input name="Email" type="email" placeholder="Email" required>
-  <input name="Name" type="text" placeholder="Name" required>
-  <button type="submit">Send</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Movies & Series</title>
+  <!-- Google Font for playful Jellybean title -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .request-form {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      box-sizing: border-box; /* ensures padding stays inside the box */
+      overflow: hidden; /* prevent elements from spilling out */
+    }
+
+    /* Jellybean Title */
+    .jellybean-title {
+      font-family: 'Baloo 2', cursive;
+      font-size: 48px;
+      background: linear-gradient(90deg, #ff6f91, #ffc371);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .request-form h2:nth-of-type(2) {
+      font-size: 20px;
+      color: #555;
+      margin: 10px 0 30px 0;
+    }
+
+    .request-form input,
+    .request-form select {
+      width: 100%;
+      padding: 14px 18px;
+      margin: 10px 0;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      outline: none;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      box-sizing: border-box; /* ensure input padding stays inside */
+    }
+
+    .request-form input:focus,
+    .request-form select:focus {
+      border-color: #ff6f91;
+      box-shadow: 0 0 12px rgba(255,111,145,0.3);
+    }
+
+    .request-form button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(102,126,234,0.3);
+    }
+
+    .request-form button:hover {
+      background: linear-gradient(90deg, #5a67d8, #6b4bbf);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(102,126,234,0.4);
+    }
+
+    .request-form p {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #777;
+    }
+
+    /* Ensure all elements stay inside the card */
+    .request-form * {
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+
+  <form class="request-form" 
+        method="POST" 
+        action="https://script.google.com/macros/s/AKfycby16eiNFzJ8gEHMjsPXVcNvW4Nre22l1QwJoC5orXbYOZG_iInHwIsBWk3W-j-LtTgu/exec">
+    <h2 class="jellybean-title">Jellybean</h2>
+    <h2>(Request Form)</h2>
+
+    <input name="Username" type="text" placeholder="Your username" required>
+    <input name="movies/series" type="text" placeholder="Your movies or series" required>
+    <input name="Year" type="text" placeholder="Year released" required>
+
+    <button type="submit">Send Request</button>
+    <p>We’ll notify you once your request is processed!</p>
+  </form>
+
+</body>
+</html>
